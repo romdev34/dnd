@@ -1,0 +1,9 @@
+parameters:
+    level: 7
+    paths:
+        - .
+    bootstrapFiles:
+        - %currentWorkingDirectory%/vendor/autoload.php
+        - %currentWorkingDirectory%/vendor/magento/magento2-base/dev/tests/static/framework/Magento/PhpStan/autoload.php
+    excludePaths:
+        - 'Test/*'

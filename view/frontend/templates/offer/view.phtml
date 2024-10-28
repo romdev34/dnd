@@ -1,0 +1,33 @@
+<?php
+/**
+ * Category view template
+ *
+ * @var $block \RomainDndOffers\Offers\Block\View
+ */
+/** @var Escaper $escaper */
+
+use Magento\Framework\Escaper; ?>
+
+<?php
+if ($offer = $block->getOfferById()): ?>
+    <div class="offer-details">
+        <h1><?= $escaper->escapeHtml($offer->getLabel()); ?></h1>
+        <p><strong>Details:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <?php
+else: ?>
+    <?php
+    // Add an error message to the session using messageManager
+    /** @var \Magento\Framework\Message\ManagerInterface $messageManager */
+    $messages = [];
+    $messageManager = $block->getMessageManager();
+
+    foreach ($messageManager->getMessages()->getItems() as $message) {
+        $messages[] = ($message->getText());
+    };
+    echo $escaper->escapeHtml($messages[0]);
+    ?>
+    <?php
+endif; ?>
+

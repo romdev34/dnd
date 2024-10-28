@@ -1,0 +1,80 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+
+use RomainDndOffers\Offers\Block\Category\Offer;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+
+/** @var Escaper $escaper */ ?>
+<?php
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
+
+/**
+ * Category view template
+ *
+ * @var $block Offer
+ */
+?>
+<?php
+
+$categoryId = $block->getCategory()->getId();
+$offers = $block->getCategoryOffers($categoryId);
+
+$jsonOffers = [];
+if ($offers && count($offers) > 0) {
+    foreach ($offers as $offer) {
+        $jsonOffers[] = $offer->toArray();
+    }
+    $offer = $offers[array_key_first($offers)];
+
+    if (!empty($offers)): ?>
+
+        <div id="category-offers-bloc">
+            <h3>LES OFFRES DU MOMENT</h3>
+
+            <div id="offer-presentation">
+                <img
+                    src="<?= $escaper->escapeUrl($block->getBaseUrl() . 'media/offer/images/' . $offer->getImage()) ?>"
+                    alt="<?= $escaper->escapeHtml($offer->getLabel()) ?>"/>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Adipisci dicta dolorum iure, quam quasi repellendus sint.
+                    Facilis harum incidunt ipsa natus porro quisquam quo. Deserunt
+                    dicta ea possimus quae voluptas?</p>
+            </div>
+            <div class="offer-plus">
+                <a id="offer-plus-link" href="
+                <?= $escaper->escapeUrl(
+                    $block->getBaseUrl() . 'offers/view/offer/id/' . $offer->getOfferId()
+                )
+                ?>
+                ">
+                    En savoir plus
+                </a>
+            </div>
+            <div class="offer-navigation">
+                <div id="prev-offer">Offre précédente</div>
+                <div id="next-offer">Offre suivante</div>
+            </div>
+        </div>
+
+        <?php
+    endif; ?>
+
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "RomainDndOffers_Offers/js/offer": {
+                "offers" : <?= // phpcs:ignore Squiz.Security.EscapeOutput.OutputNotEscaped
+                json_encode($jsonOffers) ?>
+
+        }
+    }
+}
+    </script>
+    <?php
+}

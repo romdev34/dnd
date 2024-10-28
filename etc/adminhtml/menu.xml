@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <!-- Add a new top-level menu item under 'Marketing' -->
+        <add id="RomainDndOffers_Offers::offers"
+             title="Offres"
+             module="RomainDndOffers_Offers"
+             sortOrder="10"
+             resource="RomainDndOffers_Offers::offers"
+             parent="Magento_Backend::marketing" />
+
+        <add id="RomainDndOffers_Offers::offers_submenu"
+             title="Offres"
+             module="RomainDndOffers_Offers"
+             sortOrder="10"
+             resource="RomainDndOffers_Offers::offers_submenu"
+             action="offers/offer/index"
+             parent="RomainDndOffers_Offers::offers" />
+    </menu>
+</config>

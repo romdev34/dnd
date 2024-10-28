@@ -1,0 +1,16 @@
+{
+    "dnd_offers": {
+        "column": {
+            "offer_id": true,
+            "label": true,
+            "image": true,
+            "link": true,
+            "categories": true,
+            "start_date": true,
+            "end_date": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

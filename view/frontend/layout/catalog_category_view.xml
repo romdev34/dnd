@@ -1,0 +1,9 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block before="category.product.type.details.renderers"  class="RomainDndOffers\Offers\Block\Category\Offer" name="category_offers" template="RomainDndOffers_Offers::category/offers.phtml" />
+        </referenceContainer>
+
+        <move element="category_offers" destination="content" before="category.product.type.details.renderers"/>
+    </body>
+</page>

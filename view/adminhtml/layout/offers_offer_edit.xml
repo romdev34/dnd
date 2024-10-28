@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="RomainDndOffers_Offers::js/form/element/validate-end-date.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="offers_form" />
+        </referenceContainer>
+    </body>
+</page>

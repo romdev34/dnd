@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="RomainDndOffers\Offers\Api\Data\OfferInterface" type="RomainDndOffers\Offers\Model\Offer" />
+    <preference for="RomainDndOffers\Offers\Api\OfferRepositoryInterface" type="RomainDndOffers\Offers\Model\OfferRepository" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="offers_listing_data_source" xsi:type="string">DndOffersCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="DndOffersCollection" type="RomainDndOffers\Offers\Ui\DataProvider\Listing\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dnd_offers</argument>
+            <argument name="resourceModel" xsi:type="string">RomainDndOffers\Offers\Model\ResourceModel\Offer</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="RomainDndOffers\Offers\OfferImageUpload" type="RomainDndOffers\Offers\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">offer/tmp/images</argument>
+            <argument name="basePath" xsi:type="string">offer/images</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="RomainDndOffers\Offers\Controller\Adminhtml\Offer\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">RomainDndOffers\Offers\OfferImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="RomainDndOffers\Offers\Controller\Adminhtml\Offer\Save">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">RomainDndOffers\Offers\OfferImageUpload</argument>
+        </arguments>
+    </type>
+
+</config>
