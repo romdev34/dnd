@@ -35,6 +35,16 @@ class Index extends Action implements HttpGetActionInterface
     }
 
     /**
+     * Check admin permissions for this controller
+     *
+     * @return bool
+     */
+    protected function _isAllowed(): bool
+    {
+        return $this->_authorization->isAllowed('RomainDndOffers_Offers::offres');
+    }
+
+    /**
      * Add the main Admin Grid page
      *
      * @return Page

@@ -38,16 +38,6 @@ class Upload extends Action implements HttpPostActionInterface
     }
 
     /**
-     * Check admin permissions for this controller
-     *
-     * @return bool
-     */
-    protected function _isAllowed(): bool
-    {
-        return $this->_authorization->isAllowed('RomainDndOffers_Offers::offres');
-    }
-
-    /**
      * Upload file controller action
      *
      * @return ResultInterface

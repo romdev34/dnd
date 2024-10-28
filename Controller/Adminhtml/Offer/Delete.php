@@ -17,13 +17,6 @@ use Magento\Backend\Model\View\Result\Redirect;
 class Delete extends Action
 {
     /**
-     * Authorization level of a basic admin session
-     *
-     * @see _isAllowed()
-     */
-    public const ADMIN_RESOURCE = 'RomainDndOffers_Offers::offres';
-
-    /**
      * Delete action
      *
      * @return Redirect
